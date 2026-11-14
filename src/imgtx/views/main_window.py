@@ -114,7 +114,7 @@ class MainWindow(tk.Tk):
         ttk.Radiobutton(row, text="Màu (kênh V)", value="v", variable=self.mode, style="Panel.TRadiobutton",
                         command=prep).pack(side="left", padx=(10, 0))
 
-        self._section(p, "2. Ảnh tham chiếu (mục 8.2)")
+        self._section(p, "2. Ảnh tham chiếu")
         self.cb_deg = ttk.Combobox(p, state="readonly", width=32, values=DEGRADE_TITLES)
         self.cb_deg.current(1)
         self.cb_deg.pack(fill="x")
@@ -176,7 +176,7 @@ class MainWindow(tk.Tk):
         sb.pack(side="right", fill="y")
 
         fo = ttk.Frame(nb, style="Panel.TFrame", padding=6)
-        nb.add(fo, text="  Tổng quan đề 5  ")
+        nb.add(fo, text="  Tổng quan  ")
         bar = ttk.Frame(fo, style="Panel.TFrame")
         bar.pack(fill="x")
         ttk.Button(bar, text="Vẽ tổng quan (âm bản · log · γ 0.5/1/2)", style="Accent.TButton",

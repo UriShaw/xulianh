@@ -4,7 +4,7 @@ import os
 import platform
 
 import numpy as np
-import pandas as pd
+from ._lazy import pd
 
 from .. import __version__
 from .analysis import evaluate, sobel

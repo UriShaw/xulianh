@@ -1,6 +1,6 @@
 """Biểu đồ Matplotlib (dùng matplotlib.figure.Figure để nhúng được vào giao diện và lưu PNG)."""
 import numpy as np
-import pandas as pd
+from ..models._lazy import pd
 from matplotlib.figure import Figure
 
 from ..models import transforms as T
@@ -164,7 +164,7 @@ def plot_metric_by_param(df, xcol, metrics, by="degrade", fig=None):
     return fig
 
 
-def plot_bar(series: pd.Series, title, ylabel, fig=None):
+def plot_bar(series, title, ylabel, fig=None):
     fig = fig or _fig(5, 3)
     fig.clear()
     ax = fig.add_subplot(111)

@@ -46,11 +46,16 @@ class MainController:
         self.samples = self.model.samples()
         default = "camera" if "camera" in self.samples else next(iter(self.samples), None)
         self.view.set_samples(list(self.samples), default)
-        if default:
-            self._load(self.samples[default])
         self.view.after(100, self._poll_queue)
-        if run_mainloop:
-            self.view.mainloop()
+        if not run_mainloop:
+            if default:
+                self._load(self.samples[default])
+            return
+        # Hiện cửa sổ trước, nạp ảnh mẫu ngay sau khi cửa sổ đã vẽ xong (cảm giác mở nhanh hơn)
+        if default:
+            self.view.status("Đang nạp ảnh mẫu…")
+            self.view.after(30, lambda: self._load(self.samples[default]))
+        self.view.mainloop()
 
     # ---------------------------------------------------------------- ảnh
     def on_open(self):
@@ -98,7 +103,7 @@ class MainController:
         finally:
             self.view.busy(False)
 
-    # ---------------------------------------------------------------- tổng quan đề 5
+    # ---------------------------------------------------------------- tổng quan
     def on_overview(self):
         if not self.model.loaded:
             return

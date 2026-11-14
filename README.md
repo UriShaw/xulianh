@@ -1,7 +1,7 @@
 # ImgTX – Khảo sát âm bản, logarit, gamma + so sánh biên Sobel
 
 Bài tập lớn học phần **Xử lý ảnh và thị giác máy tính (IT3243)** – Trường Đại học Công nghệ Đông Á, đề tài số 5.
-Phiên bản 2.2.0 · Mã nguồn: https://github.com/UriShaw/xulianh · Báo cáo: `docs/BaoCao_De5.pdf` (bản Word: `docs/BaoCao_De5.docx`)
+Phiên bản 2.2.1 · Mã nguồn: https://github.com/UriShaw/xulianh · Báo cáo: `docs/BaoCao_De5.pdf` (bản Word: `docs/BaoCao_De5.docx`)
 
 Làm lại theo **Tài liệu phân tích & thiết kế v2** (đề tài 5, môn Xử lý ảnh).
 
@@ -22,8 +22,9 @@ set PYTHONPATH=src && python -m imgtx.cli --config configs/default.yaml   # ch�
 Kết quả CLI: `outputs/tables/results.csv`, `tham_so_de_xuat.csv`, `tn6_do_nhay_k.csv`,
 `outputs/figures/*.png`, `outputs/hypotheses.md`, `outputs/run_info.json`.
 
-## Tự đóng gói lại exe
-Bấm đúp `build_exe.bat` (cần Python 3.10–3.12) → `dist\ImgTX.exe`. Logo: `assets/imgtx.ico`
+## Tự đóng gói lại
+Bấm đúp `build_exe.bat` (cần Python 3.10–3.12) → `dist\ImgTX\ImgTX.exe`; nếu máy có NSIS thì tạo thêm
+`dist\ImgTX_Setup_x.y.z.exe` từ `installer/imgtx.nsi`. Logo: `assets/imgtx.ico`
 (sinh bằng `tools_make_logo.py`), thông tin tệp: `version_info.txt`.
 
 ## Cấu trúc MVC

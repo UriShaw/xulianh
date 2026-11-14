@@ -8,22 +8,22 @@ CÔNG THỨC
   • Gamma:    s = 255 · c · (r / 255)^γ                    (γ < 1 làm sáng, γ > 1 làm tối; c > 1 gây bão hoà)
   • Quan hệ gradient: |∇s| = |T′(f)| · |∇f|  ⇒ âm bản giữ nguyên biên (H1).
 
-THUẬT TOÁN TỰ CÀI ĐẶT (yêu cầu bắt buộc của đề thi)
+THUẬT TOÁN TỰ CÀI ĐẶT
   • Ba phép biến đổi + bảng tra LUT 256 phần tử (models/transforms.py).
   • Histogram, mean, std, entropy, P1/P99 (models/analysis.py – histogram, hist_stats).
   • Sobel: tương quan 3×3 với Gx = [[-1,0,1],[-2,0,2],[-1,0,1]], Gy = Gxᵀ, đệm biên phản xạ;
     M = sqrt(Gx² + Gy²) hoặc |Gx| + |Gy| (models/analysis.py – correlate3x3, sobel).
   • Ngưỡng Otsu: cực đại phương sai giữa hai lớp từ histogram (otsu_threshold).
   • F1/IoU, tương quan gradient, MSE, PSNR.
-  OpenCV chỉ dùng để đọc/ghi ảnh và để ĐỐI CHIẾU: tab "Tổng quan đề 5" → nút Kiểm chứng.
+  OpenCV chỉ dùng để đọc/ghi ảnh và để ĐỐI CHIẾU: tab "Tổng quan" → nút Kiểm chứng.
 
 CÁCH DÙNG
   1. Mở ảnh hoặc chọn ảnh mẫu. Chọn ảnh xám hoặc màu (biến đổi kênh V của HSV, giữ sắc độ).
   2. Ảnh tham chiếu: chọn một kiểu suy giảm để coi ảnh đang mở là ẢNH GỐC, ảnh đầu vào là ảnh đã suy giảm.
      Khi đó F1/IoU/tương quan gradient/MSE/PSNR đo mức bảo toàn so với ảnh gốc.
-     Chọn "Không – ảnh thật" khi không có ảnh gốc: chỉ số biên chỉ đo độ giống ảnh đầu vào (hạn chế, mục 8.2).
+     Chọn "Không – ảnh thật" khi không có ảnh gốc: chỉ số biên chỉ đo độ giống ảnh đầu vào (hạn chế).
   3. Chọn phép biến đổi và kéo thanh trượt. Bảng dưới ảnh so sánh với dòng identity (mốc).
-  4. Tab "Tổng quan đề 5": ảnh – histogram – biên của âm bản, log, γ = 0.5 / 1 / 2 trên một màn hình.
+  4. Tab "Tổng quan": ảnh – histogram – biên của âm bản, log, γ = 0.5 / 1 / 2 trên một màn hình.
   5. Tab "Quét tham số": TN2 (γ), TN3 (gain log), TN7 (heatmap γ × c) trên ảnh hiện tại.
   6. Tab "Thí nghiệm hàng loạt": chạy toàn bộ TN1–TN8 trên thư mục ảnh, xuất
        tables/results.csv, tables/tham_so_de_xuat.csv, tables/tn6_do_nhay_k.csv,

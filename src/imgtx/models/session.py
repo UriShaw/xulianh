@@ -7,7 +7,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 import numpy as np
-import pandas as pd
+from ._lazy import pd
 
 import time
 
@@ -158,7 +158,7 @@ class ImageSession:
         return df.loc[df.psnr.idxmax()]
 
     def overview(self, s: Settings):
-        """Tổng quan đề 5 trên một màn hình: đầu vào, âm bản, log, γ = 0.5 / 1 / 2 (slide 18, chương 2).
+        """Tổng quan trên một màn hình: đầu vào, âm bản, log, γ = 0.5 / 1 / 2 (slide 18, chương 2).
 
         Trả list (tên, ảnh, dòng chỉ số, bản đồ biên top-k)."""
         self.prepare(s)
