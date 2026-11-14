@@ -5,9 +5,11 @@ Phiên bản 2.2.1 · Mã nguồn: https://github.com/UriShaw/xulianh · Báo c�
 
 Làm lại theo **Tài liệu phân tích & thiết kế v2** (đề tài 5, môn Xử lý ảnh).
 
-## Chạy ngay (không cần cài Python)
-Tải **`ImgTX.exe`** ở mục *Releases* của repo (hoặc dùng file trong thư mục dự án) rồi bấm đúp. Lần mở đầu mất khoảng 5–15 giây vì exe tự giải nén thư viện.
-Nếu Windows SmartScreen cảnh báo (exe chưa ký số): chọn *More info → Run anyway*.
+## Cài đặt và chạy (không cần cài Python)
+- **Khuyên dùng:** chạy `ImgTX_Setup_2.2.1.exe` → mở ImgTX từ Desktop hoặc Start Menu (mở trong ≈ 4,5 s).
+  Không cần quyền Administrator; gỡ trong Settings → Apps.
+- **Mang đi:** `ImgTX.exe` một file, không cần cài, nhưng mở chậm hơn (≈ 10 s) vì tự giải nén mỗi lần chạy.
+- Hai file ở mục *Releases* của repo. Nếu Windows SmartScreen cảnh báo (chưa ký số): *More info → Run anyway*.
 
 ## Chạy từ mã nguồn
 ```
