@@ -1,0 +1,32 @@
+# Cấu hình thí nghiệm (mục 7.2 tài liệu thiết kế)
+images:
+  - { path: "data/raw/*",       group: "chuan",          has_gt: true }    # ảnh chuẩn -> tạo cặp (gốc, suy giảm)
+  - { path: "data/detail/*",    group: "nhieu_chi_tiet", has_gt: true }    # vân gạch, cỏ, sỏi, chữ
+  - { path: "data/medical/*",   group: "y_te",           has_gt: true }    # võng mạc, phantom CT, tế bào, IHC
+  - { path: "data/synthetic/*", group: "tong_hop",       has_gt: true }    # ảnh tổng hợp sinh bằng code
+  - { path: "data/real/*",      group: "anh_that",       has_gt: false }   # ảnh thật không có ảnh gốc
+resize: 512
+
+degrade:             # chỉ áp dụng cho ảnh có ground truth
+  offset: { alpha: 0.4, beta: 10 }                       # thiếu sáng: tuyến tính + mức đen
+  noisy:  { alpha: 0.4, beta: 10, sigma: 4.0, seed: 0 }  # thêm nhiễu Gauss
+  bright: { alpha: 1.6, beta: 40 }                       # quá sáng, cắt ngưỡng 255
+  control_gamma: { gamma: 2.5 }                          # CHỈ đối chứng (TN8), không dùng kết luận
+
+edge:
+  density: 0.10        # top-k cho nhị phân hoá
+  ksize: 3
+  density_sweep: [0.05, 0.10, 0.15, 0.20]   # TN6
+
+transforms:
+  identity: {}        # dòng mốc: không biến đổi
+  negative: {}
+  log:   { gain: [0.5, 0.75, 1.0, 1.25, 1.5] }
+  gamma: { gamma: [0.2, 0.3, 0.4, 0.5, 0.7, 1.0, 1.5, 2.0, 3.0], c: [0.5, 0.75, 1.0, 1.5, 2.0, 2.5, 3.0, 4.0] }
+
+select:              # quy tắc chọn tham số (mục 7.3) – giá trị khởi điểm, chỉnh theo dữ liệu
+  mean_range: [90, 160]
+  f1_margin: 0.10
+  weights: [0.4, 0.4, 0.2]   # F1, grad_corr, entropy/8
+
+output: outputs

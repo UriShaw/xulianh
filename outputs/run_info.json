@@ -1,0 +1,119 @@
+{
+  "config": {
+    "images": [
+      {
+        "path": "data/raw/*",
+        "group": "chuan",
+        "has_gt": true
+      },
+      {
+        "path": "data/detail/*",
+        "group": "nhieu_chi_tiet",
+        "has_gt": true
+      },
+      {
+        "path": "data/medical/*",
+        "group": "y_te",
+        "has_gt": true
+      },
+      {
+        "path": "data/synthetic/*",
+        "group": "tong_hop",
+        "has_gt": true
+      },
+      {
+        "path": "data/real/*",
+        "group": "anh_that",
+        "has_gt": false
+      }
+    ],
+    "resize": 512,
+    "degrade": {
+      "offset": {
+        "alpha": 0.4,
+        "beta": 10
+      },
+      "noisy": {
+        "alpha": 0.4,
+        "beta": 10,
+        "sigma": 4.0,
+        "seed": 0
+      },
+      "bright": {
+        "alpha": 1.6,
+        "beta": 40
+      },
+      "control_gamma": {
+        "gamma": 2.5
+      }
+    },
+    "edge": {
+      "density": 0.1,
+      "ksize": 3,
+      "density_sweep": [
+        0.05,
+        0.1,
+        0.15,
+        0.2
+      ]
+    },
+    "transforms": {
+      "identity": {},
+      "negative": {},
+      "log": {
+        "gain": [
+          0.5,
+          0.75,
+          1.0,
+          1.25,
+          1.5
+        ]
+      },
+      "gamma": {
+        "gamma": [
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.7,
+          1.0,
+          1.5,
+          2.0,
+          3.0
+        ],
+        "c": [
+          0.5,
+          0.75,
+          1.0,
+          1.5,
+          2.0,
+          2.5,
+          3.0,
+          4.0
+        ]
+      }
+    },
+    "select": {
+      "mean_range": [
+        90,
+        160
+      ],
+      "f1_margin": 0.1,
+      "weights": [
+        0.4,
+        0.4,
+        0.2
+      ]
+    },
+    "output": "outputs"
+  },
+  "env": {
+    "imgtx": "2.2.0",
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "opencv": "5.0.0",
+    "pandas": "3.0.5",
+    "matplotlib": "3.11.2",
+    "platform": "Linux-6.18.44-fc-v470-x86_64-with-glibc2.39"
+  }
+}

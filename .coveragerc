@@ -1,0 +1,6 @@
+[run]
+omit =
+    src/imgtx/views/main_window.py
+    src/imgtx/views/widgets.py
+    src/imgtx/main.py
+    src/imgtx/__main__.py
